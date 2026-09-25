@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora Científica</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <div class="calculator">
+    <!-- Encabezado y Panel Solar -->
+    <div class="calculator-header">
+      <span class="brand">CASIO-STYLE <small>SCIENTIFIC</small></span>
+      <div class="solar-panel">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+
+    <!-- Pantalla LCD -->
+    <div class="display">
+      <div class="indicators">
+        <span id="deg-indicator" class="active">DEG</span>
+        <span id="rad-indicator">RAD</span>
+        <span id="mem-indicator" class="hidden">M</span>
+        <span class="model">FX-991 ES</span>
+      </div>
+      <div id="lcd-history" class="lcd-history">&nbsp;</div>
+      <div id="lcd-main" class="lcd-main">0</div>
+    </div>
+
+    <!-- Teclado de Botones -->
+    <div class="keypad">
+      <!-- Fila 1: Memoria y Modo -->
+      <button class="btn btn-func" onclick="handleMemory('MC')">MC</button>
+      <button class="btn btn-func" onclick="handleMemory('MR')">MR</button>
+      <button class="btn btn-func" onclick="handleMemory('M-')">M-</button>
+      <button class="btn btn-func" onclick="handleMemory('M+')">M+</button>
+      <button id="btn-deg-rad" class="btn btn-mode" onclick="toggleAngleMode()">DEG</button>
+
+      <!-- Fila 2: Funciones Científicas 1 -->
+      <button class="btn btn-func" onclick="appendFunc('sin(')">sin</button>
+      <button class="btn btn-func" onclick="appendFunc('cos(')">cos</button>
+      <button class="btn btn-func" onclick="appendFunc('tan(')">tan</button>
+      <button class="btn btn-func" onclick="appendSymbol('^')">x<sup>y</sup></button>
+      <button class="btn btn-func" onclick="appendFunc('sqrt(')">√</button>
+
+      <!-- Fila 3: Funciones Científicas 2 -->
+      <button class="btn btn-func" onclick="appendFunc('log(')">log</button>
+      <button class="btn btn-func" onclick="appendFunc('ln(')">ln</button>
+      <button class="btn btn-func" onclick="appendSymbol('^2')">x²</button>
+      <button class="btn btn-func" onclick="appendSymbol('(')">(</button>
+      <button class="btn btn-func" onclick="appendSymbol(')')">)</button>
+
+      <!-- Fila 4: Numérico 7-9 + Borrado -->
+      <button class="btn btn-num" onclick="appendNumber('7')">7</button>
+      <button class="btn btn-num" onclick="appendNumber('8')">8</button>
+      <button class="btn btn-num" onclick="appendNumber('9')">9</button>
+      <button class="btn btn-clear" onclick="deleteLast()">DEL</button>
+      <button class="btn btn-clear" onclick="clearAll()">AC</button>
+
+      <!-- Fila 5: Numérico 4-6 + Operaciones básicas -->
+      <button class="btn btn-num" onclick="appendNumber('4')">4</button>
+      <button class="btn btn-num" onclick="appendNumber('5')">5</button>
+      <button class="btn btn-num" onclick="appendNumber('6')">6</button>
+      <button class="btn btn-op" onclick="appendOp('*')">×</button>
+      <button class="btn btn-op" onclick="appendOp('/')">÷</button>
+
+      <!-- Fila 6: Numérico 1-3 + Operaciones básicas -->
+      <button class="btn btn-num" onclick="appendNumber('1')">1</button>
+      <button class="btn btn-num" onclick="appendNumber('2')">2</button>
+      <button class="btn btn-num" onclick="appendNumber('3')">3</button>
+      <button class="btn btn-op" onclick="appendOp('+')">+</button>
+      <button class="btn btn-op" onclick="appendOp('-')">-</button>
+
+      <!-- Fila 7: Botones Inferiores -->
+      <button class="btn btn-num" onclick="appendNumber('0')">0</button>
+      <button class="btn btn-num" onclick="appendDecimal()">.</button>
+      <button class="btn btn-func" onclick="appendSymbol('π')">π</button>
+      <button class="btn btn-func" onclick="toggleSign()">±</button>
+      <button class="btn btn-equal" onclick="calculateResult()">=</button>
+    </div>
+
+    <div class="footer-note">Soporta Entrada por Teclado</div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
